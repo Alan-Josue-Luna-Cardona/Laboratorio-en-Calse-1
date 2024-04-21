@@ -17,7 +17,10 @@ namespace LaboratorioProgra1.Laboratorio
         private string desarrolladora;
         private double calificacion;
         private int anioLanzamiento;
-        private bool jugando;
+        private bool jugando =false;
+        public List<Zombies>VJZ{ get; set; }
+        public List<MundoAbierto> VJMA { get; set; }
+        public List<Historia> VJH { get; set; }
 
         public string Titulo
         {
@@ -36,15 +39,15 @@ namespace LaboratorioProgra1.Laboratorio
             get { return calificacion; }
             set
             {
-                //  La calificación debe estar entre 0 y 10
-                if (value > 0 && value < 10)
+               
+                if (value >= 0 && value <= 10)
                 {
                     calificacion = value;
                 } else
                 {
-                    Console.WriteLine("La calificación debe estar entre 0 y 10");//1
+                    Console.WriteLine("La calificación debe estar entre 0 y 10");
                 }
-                    
+
             }
         }
 
@@ -53,11 +56,16 @@ namespace LaboratorioProgra1.Laboratorio
             get { return anioLanzamiento; }
             set
             {
-                // Error lógico: El año de lanzamiento 
-                anioLanzamiento = value;
+                if (value <= 2024)
+                {
+                    anioLanzamiento = value;
+                }
+                else
+                {
+                    Console.WriteLine("El año debe de ser anterior o igual a 2024");
+                }
             }
         }
-
         public void MostrarInformacion()
         {
             Console.WriteLine("Título: " + Titulo);
@@ -82,7 +90,7 @@ namespace LaboratorioProgra1.Laboratorio
         {
             // Error lógico
             jugando = false;
-            Console.WriteLine("Partida detenida.");//2
+            Console.WriteLine("Partida detenida.");
         }
 
         public void TerminarJuego()
@@ -94,9 +102,14 @@ namespace LaboratorioProgra1.Laboratorio
             }
             else
             {
-                Console.WriteLine("No hay partida en curso.");//3
+                Console.WriteLine("No hay partida en curso.");
             }
         }
-
+        public void Lista()
+        {
+            Console.WriteLine(VJZ);
+            Console.WriteLine(VJMA);
+            Console.WriteLine(VJH);
+        }
     }
 }

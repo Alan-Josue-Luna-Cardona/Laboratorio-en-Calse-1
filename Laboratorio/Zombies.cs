@@ -12,17 +12,29 @@ namespace LaboratorioProgra1.Laboratorio
     }
     internal class Zombies : VideoJuego
     {
-        public int numZom {  get; set; }
-        public Armas armasgame { get; set; }
+        public int numZom
+        {
+            get { return numZom; }
+            set
+            {
+                if (value >= 0)
+                {
+                    numZom = value;
+                }
+                else
+                {
+                    Console.WriteLine("El número debe de ser positivo");
+                }
+
+            }
+        }
+public Armas armasgame { get; set; }
         public void Equipo()
         {
             switch (armasgame)
             {
                 case Armas.DeCerca:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("¡¡PELIGRO!!");
-                    Thread.Sleep(200);
-                    Console.Write("           ");
+                    Console.WriteLine("Tienes munición infinita, más tienes que pelear cuerpo a cuerpo");
                     Thread.Sleep(200);
                     break;
                 case Armas.CortaDistancia:
@@ -39,7 +51,14 @@ namespace LaboratorioProgra1.Laboratorio
         public void Peligro()
         {
             if (numZom >= 25)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("¡¡PELIGRO!!");
+                Thread.Sleep(200);
+                Console.Write("           ");
+                Thread.Sleep(200);
                 Console.WriteLine("Se acerca una horda preparate");
+            }
             else
                 Console.WriteLine("No son una horda, pero ten cuidado");
         }

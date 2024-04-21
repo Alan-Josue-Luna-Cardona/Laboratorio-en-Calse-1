@@ -12,8 +12,36 @@ namespace LaboratorioProgra1.Laboratorio
     }
     internal class MundoAbierto : VideoJuego
     {
-        public float tamañomapa {get;set;}
-        public int numJefes { get;set;}
+        public float tamañomapa
+        {
+            get { return tamañomapa; }
+            set
+            {
+                if (value >= 0)
+                {
+                    tamañomapa = value;
+                }
+                else
+                {
+                    Console.WriteLine("No pueden ser ingresados valores negativos");
+                }
+            }
+        }
+        public int numJefes
+        {
+            get { return numJefes; }
+            set
+            {
+                if (value > 0)
+                {
+                    numJefes = value;
+                }
+                else
+                {
+                    Console.WriteLine("Debe de existir por lo menos un Jefe");
+                }
+            }
+        }
         public biomas biomasgame { get;set;}    
 
         public void Lugar()
